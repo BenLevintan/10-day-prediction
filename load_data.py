@@ -2,14 +2,14 @@ import pandas as pd
 
 df = pd.read_csv('players.csv')
 
-# Display the first 5 rows to see what the data looks like
-print("First 5 rows of the dataset:")
-print(df.head())
+# Isulate the prediction class
+target = df['SEASON']
 
-# Show information about the columns, data types, and missing values
-print("\nDataset Information:")
-print(df.info())
+# Removed columns that will not be used in training (explenation in README.md!!!)
+columns_to_drop = ['Unnamed: 0', 'PLAYER', 'SEASON', 'season year']
+X = df.drop(columns=columns_to_drop)
 
-# Check the balance of our target label (SEASON)
-print("\nTarget Label Distribution:")
-print(df['SEASON'].value_counts())
+print("Columns in our training features (X):")
+print(X.columns.tolist())
+
+print(f"\nShape of X: {X.shape}")
